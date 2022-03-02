@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const template = "hh:mm:ss tt";
+            const clockTime = template
+                .replace("hh", "03")
+                .replace("mm", "33")
+                .replace("ss", "33")
+                .replace("tt", "PM");
+            console.log(clockTime);
+
+            const compoese = (...fns) => arg => fns.reduce((composed, f) => f(composed), arg)
+
+        </script>
+    </body>
+</html>

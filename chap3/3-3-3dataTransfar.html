@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const schools = ["Yorktown", "Washington & Liberty", "Wakefield"];
+            console.log(schools.join(", "));
+
+            const wSchools = schools.filter((school) => school[0] === "W");
+            console.log(wSchools);
+
+            const cutSchool = (cut, list) =>
+                list.filter((school) => school !== cut);
+            console.log(cutSchool("Washington & Liberty", schools).join(", "));
+            console.log(schools.join("\n"));
+
+            const highSchools = schools.map(
+                (school) => `${school} High School`
+            );
+            console.log(highSchools.join("\n"));
+            console.log(schools.join("\n"));
+
+            const highSchools2 = schools.map((school) => ({ name: school }));
+            console.log(highSchools2);
+
+            const school2 = [
+                { name: "Yorktown" },
+                { name: "Stratford" },
+                { name: "Washington & Liberty" },
+                { name: "Wakefield" },
+            ];
+            /*
+            const editName = (oldName, name, arr) =>
+                arr.map((item) => {
+                    if (item.name === oldName) {
+                        return {
+                            ...item,
+                            name,
+                        };
+                    } else {
+                        return item;
+                    }
+                });
+            */
+            const editName = (oldName, name, arr) =>
+                arr.map((item) =>
+                    item.name === oldName
+                        ? {
+                              ...item,
+                              name,
+                          }
+                        : item
+                );
+
+            const updateSchools = editName("Stratford", "HB Woodlawn", school2);
+            console.log(updateSchools[1]);
+            console.log(school2[1]);
+
+            const school3 = {
+                Yorktown: 10,
+                "Washington & Liberty": 2,
+                Wakefield: 5,
+            };
+
+            const schoolArray = Object.keys(school3).map((key) => ({
+                name: key,
+                wins: school3[key],
+            }));
+
+            console.log(schoolArray);
+
+            const ages = [21, 18, 42, 40, 64, 63, 34];
+
+            const maxAge = ages.reduce((max, age) => {
+                console.log(`${age} > ${max} = ${age > max}`);
+                if (age > max) {
+                    return age;
+                } else {
+                    return max;
+                }
+            }, 0);
+
+            const colors = [
+                {
+                    id: "xekare",
+                    title: "rad red",
+                    rating: 3,
+                },
+                {
+                    id: "jbwsof",
+                    title: "big blue",
+                    rating: 2,
+                },
+                {
+                    id: "prigbj",
+                    title: "grizzly grey",
+                    rating: 5,
+                },
+                {
+                    id: "ryhbhsl",
+                    title: "banana",
+                    rating: 1,
+                },
+            ];
+
+            const hashColors = colors.reduce((hash, { id, title, rating }) => {
+                hash[id] = { title, rating };
+                return hash;
+            }, {});
+
+            console.log(hashColors);
+        </script>
+    </body>
+</html>
