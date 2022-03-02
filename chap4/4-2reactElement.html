@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React Samples</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script>
+            const h1 = React.createElement(
+                "h1",
+                { id: "recipe-0" },
+                "Backd Salmon"
+            );
+
+            const dish = React.createElement("h1", null, "Baked Salmon");
+            const dessert = React.createElement(
+                "h2",
+                null,
+                "Coconut Cream Pie"
+            );
+            ReactDOM.render([dish, dessert], document.getElementById("root"));
+
+            const list = React.createElement(
+                "ul",
+                null,
+                React.createElement("li", null, "2 lb salmon"),
+                React.createElement("li", null, "5 springs freshrosemary"),
+                React.createElement("li", null, "2 tablespoonsolive oil"),
+                React.createElement("li", null, "2 smalllemons"),
+                React.createElement("li", null, "1 teaspoonkosher salt"),
+                React.createElement("li", null, "4 cloves of chopped garlic")
+            );
+
+            console.log(list);
+
+            React.createElement(
+                "section",
+                { id: "baked-salmon" },
+                React.createElement("h1", null, "Baked Salmon"),
+                React.createElement(
+                    "ul",
+                    { className: "ingredients" },
+                    React.createElement("li", null, "2 lb salmon"),
+                    React.createElement("li", null, "5 springs freshrosemary"),
+                    React.createElement("li", null, "2 tablespoonsolive oil"),
+                    React.createElement("li", null, "2 smalllemons"),
+                    React.createElement("li", null, "1 teaspoonkosher salt"),
+                    React.createElement(
+                        "li",
+                        null,
+                        "4 cloves of chopped garlic"
+                    )
+                ),
+                React.createElement(
+                    "section",
+                    { className: "instructions" },
+                    React.createElement("h2", null, "Cooking Instructions"),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Preheat the oven to 375 degrees."
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Lightly coat aluminum foil with oil."
+                    ),
+                    React.createElement("p", null, "Place salmon on foil."),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Cover with resemary, sliced lemons, chopped garlic."
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        "Bake for 15-20 minutes until cooked through."
+                    ),
+                    React.createElement("p", null, "Remove from oven.")
+                )
+            );
+
+            const items = [
+                "2 lb salmon",
+                "5 springs freshrosemary",
+                "2 tablespoonsolive oil",
+                "2 smalllemons",
+                "1 teaspoonkosher salt",
+                "4 cloves of chopped garlic",
+            ];
+
+            React.createElement(
+                "ul",
+                { className: "ingredients" },
+                items.map((ingredient, i) =>
+                    React.createElement("li", { key: i }, ingredient)
+                )
+            );
+        </script>
+    </body>
+</html>

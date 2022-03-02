@@ -1,4 +1,6 @@
 # ReactHandsOnLearning
+- github
+  - https://github.com/oreilly-japan/learning-react-2e-ja
 - chap2 JavaScript基礎
   - 2.5 非同期処理
 
@@ -9,3 +11,8 @@
   - 3.4 高階関数
   - 3.5 再帰
   - 3.6 関数の合成
+  - 3.7 アプリケーションの構築
+
+- chap4 React基本
+  - 4.2 React要素
+  - 4.3 Reactコンポーネント
