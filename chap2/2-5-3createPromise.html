@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const getFakeMembers = (count) =>
+                new Promise((resolves, rejects) => {
+                    const api = `https://api.randomuser.me/?nat=US&results=${count}`;
+                    const request = new XMLHttpRequest();
+                    request.open("GET", api);
+                    request.onload = () =>
+                        request.status === 200
+                            ? resolves(JSON.parse(request.response).results)
+                            : reject(Error(request.statusText));
+                    request.onerror = (err) => rejects(err);
+                    request.send();
+                });
+
+            getFakeMembers(5)
+                .then((members) => console.log(members, 1))
+                .catch((error) =>
+                    console.error(`getFakeMembers faild: ${error.message}`)
+                );
+
+            async function testGetFakeMembers() {
+                try {
+                    const members = await getFakeMembers(5)
+                    console.log(members, 2)
+                } catch (error) {
+                    console.error(`getFakeMembers faild: ${error.message}`)
+                }
+            }
+
+            testGetFakeMembers()
+        </script>
+    </body>
+</html>

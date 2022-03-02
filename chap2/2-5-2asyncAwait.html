@@ -9,11 +9,15 @@
     <body>
         <script>
             const getFakePerson = async () => {
-                const res = await fetch(
-                    "https://api.randomuser.me?nat=US&results=1"
-                );
-                const { results } = await res.json();
-                console.log(results);
+                try {
+                    const res = await fetch(
+                        "https://api.randomuser.me?nat=US&results=1"
+                    );
+                    const { results } = await res.json();
+                    console.log(results);
+                } catch (err) {
+                    console.error(err);
+                }
             };
 
             getFakePerson();
