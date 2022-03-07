@@ -1,4 +1,5 @@
 import "./App.css";
+import CatsList from "./components/CatsList";
 import Checkbox from "./components/Chekbox";
 import FavaritePhrase from "./components/FavaritePhrase";
 import Rendering from "./components/Rendering";
@@ -16,7 +17,8 @@ function App() {
               You are not going to belive this but...
             </WordCount> */}
             {/* <TEstUseLayoutEffect/> */}
-            <User/>
+            {/* <User/> */}
+            <CatsList />
         </div>
     );
 }
