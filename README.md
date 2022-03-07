@@ -40,3 +40,14 @@
   1. useReducerを使った複雑なstate管理
 - 7.4 コンポーネントのパフォーマンス改善
   1. コンポーネントのメモ化
+
+## chap8 データ
+- 8.1 データ受信
+- 8.2 データの送信
+- 8.3 データの保存
+- 8.4 非同期リクエストの状態管理
+  - FixedSizeList from react-window
+  - useFetch hook
+- 8.5 複数のリクエスト
+  1. useIterator
+  1. ウォーターフォールリクエスト
