@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, Suspence, lazy, Suspense } from "react";
+import "./App.css";
+import Agreement from "./Agreement";
+import GridLoader from "react-spinners/GridLoader";
+import ErrorBoudary from "./ErrorBoudary";
+// import Main from "./Main";
+// import ErrorBoudary, { BreakThings } from "./ErrorBoudary";
+
+// const Callout = ({ children }) => <div className="callout">{children}</div>;
+
+const Main = lazy(() => import("./Main"));
+
+const loadStatus = () => {
+    console.log("load status");
+    throw new Promise((resolves) => setTimeout(resolves, 3000));
+};
+
+function createResource(pending) {
+    let error, responce;
+    pending.then((r) => (responce = r)).catch((e) => (error = e));
+
+    return {
+        read() {
+            if (error) throw error;
+            if (responce) return responce;
+            throw pending;
+        },
+    };
+}
+
+const threeSecondsToGnar = new Promise((resolves) =>
+    setTimeout(() => resolves({ gnar: "gnarly!" }), 3000)
+);
+
+const resource = createResource(threeSecondsToGnar);
+
+function Gnar() {
+    const result = resource.read();
+    return <h1>Gnar: {result.gnar}</h1>;
+}
+
+function Status() {
+    const status = loadStatus();
+    return <h1>status: {status}</h1>;
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [agree, setAgree] = useState(false);
+
+    // if (!agree) return <Agreement onAgree={() => setAgree(true)} />;
+
+    return (
+        <Suspense fallback={<GridLoader />}>
+            <ErrorBoudary>
+                {/* <Status /> */}
+                <Gnar />
+            </ErrorBoudary>
+        </Suspense>
+    );
 }
 
 export default App;
