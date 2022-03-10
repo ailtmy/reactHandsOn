@@ -22,9 +22,8 @@ const Color = memo(
                 <div
                     onClick={() => navigate(`/${id}`)}
                     style={{ height: 50, backgroundColor: color }}
-                >
-                    <Rating selected={rating} onChange={rate} />
-                </div>
+                />
+                <Rating selected={rating} onChange={rate} />
             </section>
         );
     },
